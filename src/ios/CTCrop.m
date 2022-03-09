@@ -136,8 +136,10 @@
     // generate unique file name
     int i = 1;
     do {
-        filePath = [NSString stringWithFormat:@"%@/%@%@.%@", docsPath, CDV_PHOTO_PREFIX, [dateFormatter stringFromDate:[NSDate date]], extension];
+        NSString *fullPath = [NSString stringWithFormat:@"%@/NoCloud/IDPLive",  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0]];
+        filePath = [NSString stringWithFormat:@"%@/%@%@.%@", fullPath, CDV_PHOTO_PREFIX, [dateFormatter stringFromDate:[NSDate date]], extension];
     } while ([fileMgr fileExistsAtPath:filePath]);
+    NSLog(@"pathtest :: %@",filePath);
     
     return filePath;
 }

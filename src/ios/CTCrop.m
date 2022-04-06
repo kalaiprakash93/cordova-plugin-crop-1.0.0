@@ -13,20 +13,6 @@
 
 @implementation CTCrop
 
-- (void) checkFileLockStatus: (CDVInvokedUrlCommand *) command {
-    NSError * error;
-    NSString *filePath = [command.arguments objectAtIndex:0];
-    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:&error];
-    BOOL isLocked = [[attributes objectForKey:NSFileImmutable] boolValue];
-                
-    if (isLocked) {
-        NSLog(@"File is locked");
-    }
-    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:isLocked];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    return;
-}
-
 - (void) cropImage: (CDVInvokedUrlCommand *) command {
     UIImage *image;
     NSString *imagePath = [command.arguments objectAtIndex:0];

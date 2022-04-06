@@ -7,6 +7,10 @@ var crop = module.exports = function cropImage (success, fail, image, options) {
   return cordova.exec(success, fail, 'CropPlugin', 'cropImage', [image, options])
 }
 
+var checkStatus = module.exports = function checkFileLockStatus (success, fail, filePath) {
+  return cordova.exec(success, fail, 'CropPlugin', 'checkFileLockStatus', [filePath])
+}
+
 module.exports.promise = function cropAsync (image, options) {
   return new Promise(function (resolve, reject) {
     crop(resolve, reject, image, options)
